@@ -1,4 +1,4 @@
-{
+export const userActivity = {
     "data": {
         "userId": 12,
         "sessions": [

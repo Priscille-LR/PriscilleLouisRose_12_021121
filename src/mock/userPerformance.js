@@ -1,4 +1,4 @@
-{
+export const userPerformance = {
     "data": {
         "userId": 12,
         "kind": {

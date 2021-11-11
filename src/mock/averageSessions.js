@@ -1,4 +1,4 @@
-{
+export const averageSessions = {
     "data": {
         "userId": 12,
         "sessions": [
