@@ -1,0 +1,22 @@
+.macros-wrapper {
+   /* grid-area: macros; */
+   grid-column: 4 / 5;
+   grid-row: 1 / 2;
+   row-gap: 50px;
+}
+
+.caloriesIcon {
+   background-color: #fbeaea;
+}
+
+.proteinIcon {
+   background-color: #e9f4fb;
+}
+
+.carbsIcon {
+   background-color: #fbf6e5;
+}
+
+.fatIcon {
+   background-color: #fbeaef;
+}
