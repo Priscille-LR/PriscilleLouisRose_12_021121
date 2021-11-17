@@ -6,11 +6,9 @@ function MacroCard(props) {
 
    return (
       <div className="macros__card">
-         <img
-            src={icon}
-            alt="calories"
-            className={`macros__card__icon ${className}`}
-         />
+         <div className={`macros__card__icon ${className}`}>
+            <img src={icon} alt="" className="macros-icon" />
+         </div>
          <div className="macros__card__info">
             <h3>{value}</h3>
             <p>{type}</p>

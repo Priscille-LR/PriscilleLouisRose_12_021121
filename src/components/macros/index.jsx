@@ -10,9 +10,8 @@ import MockedData from '../../dataSource/MockedData';
 import { useEffect } from 'react';
 
 function Macros() {
-   const icons = [caloriesIcon, proteinIcon, carbsIcon, fatIcon];
-
    const userInfo = new Service(new MockedData()).getUserInfo();
+   console.log(userInfo);
 
    return (
       <div className="macros-wrapper">

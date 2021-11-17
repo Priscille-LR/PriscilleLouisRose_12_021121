@@ -4,6 +4,7 @@ import Macros from '../macros';
 import PerformanceGraph from '../performanceGraph';
 import ActivityGraph from '../activityGraph';
 import AverageSessionsGraph from '../averageSessionsGraph';
+import ScoreGraph from '../scoreGraph';
 
 function Graphs() {
    return (
@@ -11,6 +12,7 @@ function Graphs() {
          <ActivityGraph />
          <AverageSessionsGraph />
          <PerformanceGraph />
+         <ScoreGraph />
          <Macros />
       </div>
    );

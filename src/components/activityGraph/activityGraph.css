@@ -1,0 +1,20 @@
+.activity-graph {
+   display: flex;
+   position: relative;
+   background-color: #fbfbfb;
+   color: black;
+   width: fit-content;
+   border-radius: 10px;
+   grid-column: 1 / 4;
+   grid-row: 1 / 2;
+   row-gap: 50px;
+}
+
+.activity-graph__title {
+   position: absolute;
+   top: 3%;
+   left: 3%;
+   font-size: 15px;
+   font-weight: 500;
+   margin: 2rem;
+}
