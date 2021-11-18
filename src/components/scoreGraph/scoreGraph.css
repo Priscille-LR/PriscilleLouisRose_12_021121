@@ -1,0 +1,40 @@
+.score-graph {
+   display: flex;
+   position: relative;
+   justify-content: center;
+   align-items: center;
+   background-color: #fbfbfb;
+   color: black;
+   width: fit-content;
+   border-radius: 10px;
+   grid-column: 3 /4;
+   grid-row: 2 / 3;
+   row-gap: 50px;
+}
+
+.score-graph__title {
+   position: absolute;
+   top: 3%;
+   left: 3%;
+   font-size: 15px;
+   font-weight: 500;
+   margin: 2rem;
+}
+
+.score-graph__content {
+   position: absolute;
+   text-align: center;
+   background-color: white;
+   color: #74798c;
+   width: 90px;
+   font-size: 15px;
+   font-weight: 400;
+   padding: 2.5rem;
+   border-radius: 70px;
+}
+
+.score {
+   color: black;
+   font-size: 26px;
+   font-weight: 700;
+}

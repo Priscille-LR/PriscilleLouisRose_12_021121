@@ -1,0 +1,16 @@
+.graphs-wrapper {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   grid-template-rows: repeat(2, 300px);
+   gap: 30px 30px;
+   margin-left: 10rem;
+   margin-top: 2rem;
+   margin-bottom: 5rem;
+   /* width: 100%; */
+   /* margin-left: 10rem; */
+   /* grid-template-areas:
+      'activity activity activity macros'
+      'average performance score macros'
+      'average performance score macros'; */
+   /* margin: 3rem 5rem; */
+}
