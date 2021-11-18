@@ -1,4 +1,4 @@
-import React, { PureComponent, useState } from 'react';
+import React, { PureComponent } from 'react';
 import {
    LineChart,
    CartesianGrid,
@@ -11,15 +11,35 @@ import PropTypes from 'prop-types';
 
 import Service from '../../service/Service';
 import MockedData from '../../dataSource/MockedData';
+import { useState, useEffect } from 'react';
+import DataFromAPI from '../../dataSource/DataFromAPI';
 import './averageSessionsGraph.css';
 
-function AverageSessionsGraph() {
-   const userAverageSessions = new Service(
-      new MockedData()
-   ).getUserAverageSessions();
-   console.log(userAverageSessions);
+function AverageSessionsGraph(props) {
+   const [userAverageSessions, setUserAverageSessions] = useState([]);
+   const [isDataLoading, setDataLoading] = useState(false);
+   const [error, setError] = useState(null);
 
-   const [focusBar, setFocusBar] = useState(null);
+   useEffect(() => {
+      async function fetchUserAverageSessions() {
+         setDataLoading(true);
+         try {
+            const userAverageSessions = await new Service(
+               new DataFromAPI()
+            ).getUserAverageSessions(props.userId);
+            console.log(userAverageSessions);
+            setUserAverageSessions(userAverageSessions);
+         } catch {
+            console.log('ERROR ERROR', error);
+            setError(true);
+         } finally {
+            setDataLoading(false);
+         }
+      }
+      fetchUserAverageSessions();
+   }, []);
+
+   // const [focusBar, setFocusBar] = useState(null);
 
    return (
       <div className="average-sessions-graph">
@@ -31,13 +51,13 @@ function AverageSessionsGraph() {
             height={270}
             data={userAverageSessions.sessions}
             margin={{ top: 50, right: 20, left: 20, bottom: 5 }}
-            onMouseMove={(state) => {
-               if (state.isTooltipActive) {
-                  setFocusBar(state.activeTooltipIndex);
-               } else {
-                  setFocusBar(null);
-               }
-            }}
+            // onMouseMove={(state) => {
+            //    if (state.isTooltipActive) {
+            //       setFocusBar(state.activeTooltipIndex);
+            //    } else {
+            //       setFocusBar(null);
+            //    }
+            // }}
          >
             <CartesianGrid strokeDasharray="1" horizontal="" vertical="" />
             <XAxis

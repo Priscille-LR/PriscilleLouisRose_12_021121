@@ -1,24 +1,36 @@
 import IDataSource from "./IDataSource"
-import { useEffect } from "react";
 
 class DataFromAPI extends IDataSource {
 
 
     async getUserInfo(userId) {
-        const backend = "http://localhost:3000"
+        //const response = await fetch(`http://localhost:3000/user/${userId}`)
+        //const { userInfo } = await response.json();
+        //console.log(userInfo)
+        // return userInfo
+        const userInfo = await fetch(`http://localhost:3000/user/${userId}`).then((data) => data.json())
+        return userInfo
+    }
 
-        const result = fetch(backend + '/user/' + userId)
-            .then(response => response.json())
-            .catch(error => console.log(error))
-        return result
+    async getUserPerformance(userId) {
+        // const response = await fetch('http://localhost:3000/user/' + userId + '/performance')
+        // const { userPerformance } = await response.json()
+        const userPerformance = await fetch(`http://localhost:3000/user/${userId}/performance`).then((data) => data.json())
+        return userPerformance
+    }
 
-        // useEffect(() => {
-        //     fetch(backend)
-        //     .then((response) => response.json()
-        //     .then(({userInfo}) => console.log(userInfo))
-        //     .catch((error) => console.log(error))
-        //     )
-        // }, [])
+    async getUserActivity(userId) {
+        // const response = await fetch('http://localhost:3000/user/' + userId + '/activity')
+        // const { userActivity } = await response.json()
+        const userActivity = await fetch(`http://localhost:3000/user/${userId}/activity`).then((data) => data.json())
+        return userActivity
+    }
+
+    async getUserAverageSessions(userId) {
+        // const response = await fetch('http://localhost:3000/user/' + userId + '/average-sessions')
+        // const { userAverageSessions } = await response.json()
+        const userAverageSessions = await fetch(`http://localhost:3000/user/${userId}/average-sessions`).then((data) => data.json())
+        return userAverageSessions
     }
 }
 

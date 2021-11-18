@@ -4,11 +4,35 @@ import PropTypes from 'prop-types';
 
 import Service from '../../service/Service';
 import MockedData from '../../dataSource/MockedData';
+import { useState, useEffect } from 'react';
+import DataFromAPI from '../../dataSource/DataFromAPI';
+
 import './scoreGraph.css';
 
-function ScoreGraph() {
-   const userInfo = new Service(new MockedData()).getUserInfo();
-   console.log(userInfo);
+function ScoreGraph(props) {
+   const [userInfo, setUserInfo] = useState([]);
+   const [isDataLoading, setDataLoading] = useState(false);
+   const [error, setError] = useState(null);
+
+   useEffect(() => {
+      async function fetchUserInfo() {
+         setDataLoading(true);
+         try {
+            const userInfo = await new Service(new DataFromAPI()).getUserInfo(
+               props.userId
+            );
+            console.log(userInfo);
+            setUserInfo(userInfo);
+         } catch {
+            console.log('ERROR ERROR', error);
+            setError(true);
+         } finally {
+            setDataLoading(false);
+         }
+      }
+      fetchUserInfo();
+   }, []);
+
    const data = [
       { value: userInfo.todayScore * 100, fill: '#FF0000' },
       //   { value: 100 - userInfo.todayScore },

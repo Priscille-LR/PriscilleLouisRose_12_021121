@@ -1,12 +1,12 @@
 class IDataSource {
 
-    async getUserInfo() { }
+    async getUserInfo(userId) { }
 
-    async getUserPerformance() { }
+    async getUserPerformance(userId) { }
 
-    async getUserActivity() { }
+    async getUserActivity(userId) { }
 
-    async getUserAverageSessions() { }
+    async getUserAverageSessions(userId) { }
 
 }
 

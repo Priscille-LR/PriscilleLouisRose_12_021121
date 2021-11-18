@@ -2,16 +2,16 @@ export const userInfo = {
     "data": {
         "id": 12,
         "userInfos": {
-            "firstName": "Karl",
+            "firstName": "Karlito",
             "lastName": "Dovineau",
             "age": 31
         },
         "todayScore": 0.12,
         "keyData": {
-            "calorieCount": 1930,
-            "proteinCount": 155,
-            "carbohydrateCount": 290,
-            "lipidCount": 50
+            "calorieCount": 1,
+            "proteinCount": 2,
+            "carbohydrateCount": 3,
+            "lipidCount": 4
         }
     }
 }

@@ -4,11 +4,33 @@ import PropTypes from 'prop-types';
 
 import Service from '../../service/Service';
 import MockedData from '../../dataSource/MockedData';
+import { useState, useEffect } from 'react';
 import './performanceGraph.css';
+import DataFromAPI from '../../dataSource/DataFromAPI';
 
-function PerformanceGraph() {
-   const userPerformance = new Service(new MockedData()).getUserPerformance();
-   console.log(userPerformance);
+function PerformanceGraph(props) {
+   const [userPerformance, setUserPerformance] = useState([]);
+   const [isDataLoading, setDataLoading] = useState(false);
+   const [error, setError] = useState(null);
+
+   useEffect(() => {
+      async function fetchUserPerformance() {
+         setDataLoading(true);
+         try {
+            const userPerformance = await new Service(
+               new DataFromAPI()
+            ).getUserPerformance(props.userId);
+            console.log(userPerformance);
+            setUserPerformance(userPerformance);
+         } catch {
+            console.log('ERROR ERROR', error);
+            setError(true);
+         } finally {
+            setDataLoading(false);
+         }
+      }
+      fetchUserPerformance();
+   }, []);
 
    return (
       <div className="performance-graph">

@@ -2,6 +2,7 @@ import { PerformanceModel } from "../models/perfomanceModel"
 import { UserModel } from "../models/userModel"
 import { ActivityModel } from "../models/activityModel"
 import { AverageSessionsModel } from "../models/averageSessionsModel"
+import IDataSource from "../dataSource/IDataSource"
 
 class Service {
 
@@ -9,23 +10,23 @@ class Service {
         this.dataSource = dataSource
     }
 
-    getUserInfo() {
-        const result = this.dataSource.getUserInfo()
+    async getUserInfo(userId) {
+        const result = await this.dataSource.getUserInfo(userId)
         return new UserModel(result)
     }
 
-    getUserPerformance() {
-        const result = this.dataSource.getUserPerformance()
+    async getUserPerformance(userId) {
+        const result = await this.dataSource.getUserPerformance(userId)
         return new PerformanceModel(result)
     }
 
-    getUserActivity() {
-        const result = this.dataSource.getUserActivity()
+    async getUserActivity(userId) {
+        const result = await this.dataSource.getUserActivity(userId)
         return new ActivityModel(result)
     }
 
-    getUserAverageSessions() {
-        const result = this.dataSource.getUserAverageSessions()
+    async getUserAverageSessions(userId) {
+        const result = await this.dataSource.getUserAverageSessions(userId)
         return new AverageSessionsModel(result)
     }
 

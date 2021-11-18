@@ -7,19 +7,19 @@ import { averageSessions } from "../mock/averageSessions"
 
 class MockedData extends IDataSource {
 
-    getUserInfo() {
+    getUserInfo(userId) {
         return userInfo
     }
 
-    getUserPerformance() {
+    getUserPerformance(userId) {
         return userPerformance
     }
 
-    getUserActivity() {
+    getUserActivity(userId) {
         return userActivity
     }
 
-    getUserAverageSessions() {
+    getUserAverageSessions(userId) {
         return averageSessions
     }
 

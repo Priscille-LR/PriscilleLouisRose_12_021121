@@ -6,14 +6,14 @@ import ActivityGraph from '../activityGraph';
 import AverageSessionsGraph from '../averageSessionsGraph';
 import ScoreGraph from '../scoreGraph';
 
-function Graphs() {
+function Graphs(props) {
    return (
       <div className="graphs-wrapper">
-         <ActivityGraph />
-         <AverageSessionsGraph />
-         <PerformanceGraph />
-         <ScoreGraph />
-         <Macros />
+         <ActivityGraph userId={props.userId} />
+         <AverageSessionsGraph userId={props.userId} />
+         <PerformanceGraph userId={props.userId} />
+         <ScoreGraph userId={props.userId} />
+         <Macros userId={props.userId} />
       </div>
    );
 }

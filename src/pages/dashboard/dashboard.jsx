@@ -3,11 +3,12 @@ import Greeting from '../../components/greeting';
 import Graphs from '../../components/graphs';
 import './dashboard.css';
 
-function Dashboard() {
+function Dashboard(props) {
+   console.log(props.userId);
    return (
       <div className="dashboard">
-         <Greeting />
-         <Graphs />
+         <Greeting userId={props.userId} />
+         <Graphs userId={props.userId} />
       </div>
    );
 }

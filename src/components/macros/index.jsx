@@ -7,10 +7,37 @@ import MacroCard from '../macroCard';
 import './macros.css';
 import Service from '../../service/Service';
 import MockedData from '../../dataSource/MockedData';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import DataFromAPI from '../../dataSource/DataFromAPI';
 
-function Macros() {
-   const userInfo = new Service(new MockedData()).getUserInfo();
+function Macros(props) {
+   const [userInfo, setUserInfo] = useState();
+   const [isDataLoading, setDataLoading] = useState(false);
+   //const [error, setError] = useState(null);
+
+   useEffect(() => {
+      async function fetchUserInfo() {
+         setDataLoading(true);
+         try {
+            const userInfoFromService = await new Service(
+               new DataFromAPI()
+            ).getUserInfo(props.userId);
+            console.log(userInfoFromService);
+            setUserInfo(userInfoFromService);
+         } catch (exception) {
+            console.log('ERROR ERROR', exception);
+            //setError(true);
+         } finally {
+            setDataLoading(false);
+         }
+      }
+      fetchUserInfo();
+   }, []);
+
+   if (userInfo === undefined) {
+      return <div className="macros-wrapper"></div>;
+   }
+
    console.log(userInfo);
 
    return (
