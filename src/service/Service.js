@@ -22,6 +22,7 @@ class Service {
 
     async getUserActivity(userId) {
         const result = await this.dataSource.getUserActivity(userId)
+        console.log(result)
         return new ActivityModel(result)
     }
 

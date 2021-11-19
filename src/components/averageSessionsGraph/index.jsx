@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import {
+   ResponsiveContainer,
    LineChart,
    CartesianGrid,
    XAxis,
@@ -46,11 +47,14 @@ function AverageSessionsGraph(props) {
          <div className="average-sessions-graph__title">
             Durée moyenne des sessions
          </div>
+         {/* <ResponsiveContainer> */}
          <LineChart
+            data={userAverageSessions.sessions}
             width={270}
             height={270}
-            data={userAverageSessions.sessions}
-            margin={{ top: 50, right: 20, left: 20, bottom: 5 }}
+            // margin={{ top: 80, right: 20, left: 20, bottom: 5 }}
+            margin={{ top: 0, right: 0, left: 0, bottom: -10 }}
+
             // onMouseMove={(state) => {
             //    if (state.isTooltipActive) {
             //       setFocusBar(state.activeTooltipIndex);
@@ -65,15 +69,27 @@ function AverageSessionsGraph(props) {
                tickLine={false}
                axisLine={false}
                tick={{ fill: '#FFFFFF' }}
+               padding={{ left: 15, right: 15 }}
             />
-            {/* <YAxis fill={focusBar === index ? "E62200" : "rgba(230, 34, 0, 0.2)"} />}
-/> */}
+
+            <YAxis
+               hide={true}
+               domain={['dataMin-20', 'dataMax+40']}
+               tickLine={false}
+               axisLine={false}
+            />
+
             <Tooltip
                itemStyle={{
                   color: 'black',
                }}
                formatter={(value, name, unit) => [value, unit]}
                labelStyle={{ display: 'none' }}
+               cursor={{
+                  stroke: 'black',
+                  strokeOpacity: 0.1,
+                  strokeWidth: 70,
+               }}
             />
 
             <Line
@@ -83,9 +99,16 @@ function AverageSessionsGraph(props) {
                strokeWidth={2}
                unit="min"
                dot={false}
-               activeDot={{ r: 5 }}
+               activeDot={{
+                  fill: 'white',
+                  stroke: 'white',
+                  strokeOpacity: 0.2,
+                  strokeWidth: 15,
+                  r: 5,
+               }}
             />
          </LineChart>
+         {/* </ResponsiveContainer> */}
       </div>
    );
 }

@@ -1,5 +1,10 @@
 import React, { PureComponent } from 'react';
-import { RadialBarChart, RadialBar, PolarAngleAxis } from 'recharts';
+import {
+   ResponsiveContainer,
+   RadialBarChart,
+   RadialBar,
+   PolarAngleAxis,
+} from 'recharts';
 import PropTypes from 'prop-types';
 
 import Service from '../../service/Service';
@@ -47,6 +52,7 @@ function ScoreGraph(props) {
             </span>
             de votre objectif
          </div>
+         {/* <ResponsiveContainer> */}
          <RadialBarChart
             data={data}
             width={270}
@@ -55,8 +61,9 @@ function ScoreGraph(props) {
             outerRadius={100}
             barSize={10}
             background={{ fill: 'white' }}
-            // startAngle={90} deprecated
-            // endAngle={450}
+            startAngle={90}
+            deprecated
+            endAngle={450}
          >
             <PolarAngleAxis
                type="number"
@@ -72,6 +79,7 @@ function ScoreGraph(props) {
                clockwise
             />
          </RadialBarChart>
+         {/* </ResponsiveContainer> */}
 
          {/* <PieChart
             width={270}
