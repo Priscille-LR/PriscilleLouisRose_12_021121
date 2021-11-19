@@ -6,7 +6,9 @@ Project 12 of Open Classrooms "Front-end Developer programme"
 ## Develop a Dashboard for Analytics with React
 
 
-Create the consumer-facing dashboard of a sports analytics platform, SportSee. The objective here is to build graphs and charts with React and use an API to fetch data. 
+Create the consumer-facing dashboard of a sports analytics platform, SportSee. The objectives of the project are to build charts with React and use an API to fetch data. 
+
+Here I used the chart library [Recharts](https://recharts.org/en-US/) to generate the graphs.
 
 # Prerequisites
 - [NodeJS](https://nodejs.org/en/)
