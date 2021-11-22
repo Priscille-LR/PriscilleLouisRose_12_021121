@@ -4,7 +4,9 @@ import Sidebar from './components/sidebar';
 import Dashboard from './pages/dashboard/dashboard';
 
 function App() {
-   const userId = 12;
+
+   const userId = process.env.REACT_APP_USERID
+
    return (
       <div className="App">
          <Header />

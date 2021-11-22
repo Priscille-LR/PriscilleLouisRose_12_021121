@@ -9,39 +9,9 @@ import {
    Line,
 } from 'recharts';
 import PropTypes from 'prop-types';
-
-import Service from '../../service/Service';
-import MockedData from '../../dataSource/MockedData';
-import { useState, useEffect } from 'react';
-import DataFromAPI from '../../dataSource/DataFromAPI';
 import './averageSessionsGraph.css';
 
 function AverageSessionsGraph(props) {
-   const [userAverageSessions, setUserAverageSessions] = useState([]);
-   const [isDataLoading, setDataLoading] = useState(false);
-   const [error, setError] = useState(null);
-
-   useEffect(() => {
-      async function fetchUserAverageSessions() {
-         setDataLoading(true);
-         try {
-            const userAverageSessions = await new Service(
-               new DataFromAPI()
-            ).getUserAverageSessions(props.userId);
-            console.log(userAverageSessions);
-            setUserAverageSessions(userAverageSessions);
-         } catch {
-            console.log('ERROR ERROR', error);
-            setError(true);
-         } finally {
-            setDataLoading(false);
-         }
-      }
-      fetchUserAverageSessions();
-   }, []);
-
-   // const [focusBar, setFocusBar] = useState(null);
-
    return (
       <div className="average-sessions-graph">
          <div className="average-sessions-graph__title">
@@ -49,7 +19,7 @@ function AverageSessionsGraph(props) {
          </div>
          {/* <ResponsiveContainer> */}
          <LineChart
-            data={userAverageSessions.sessions}
+            data={props.userAverageSessions.sessions}
             width={270}
             height={270}
             // margin={{ top: 80, right: 20, left: 20, bottom: 5 }}

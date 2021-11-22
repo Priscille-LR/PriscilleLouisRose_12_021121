@@ -7,48 +7,23 @@ import {
 } from 'recharts';
 import PropTypes from 'prop-types';
 
-import Service from '../../service/Service';
-import MockedData from '../../dataSource/MockedData';
-import { useState, useEffect } from 'react';
-import DataFromAPI from '../../dataSource/DataFromAPI';
-
 import './scoreGraph.css';
 
 function ScoreGraph(props) {
-   const [userInfo, setUserInfo] = useState([]);
-   const [isDataLoading, setDataLoading] = useState(false);
-   const [error, setError] = useState(null);
-
-   useEffect(() => {
-      async function fetchUserInfo() {
-         setDataLoading(true);
-         try {
-            const userInfo = await new Service(new DataFromAPI()).getUserInfo(
-               props.userId
-            );
-            console.log(userInfo);
-            setUserInfo(userInfo);
-         } catch {
-            console.log('ERROR ERROR', error);
-            setError(true);
-         } finally {
-            setDataLoading(false);
-         }
-      }
-      fetchUserInfo();
-   }, []);
+   const todayScore = props.userInfo.todayScore;
 
    const data = [
-      { value: userInfo.todayScore * 100, fill: '#FF0000' },
+      { value: todayScore * 100, fill: '#FF0000' },
       //   { value: 100 - userInfo.todayScore },
    ];
 
+   console.log(props.userInfo);
    return (
       <div className="score-graph">
          <div className="score-graph__title">Score</div>
          <div className="score-graph__content">
             <span className="score">
-               {userInfo.todayScore * 100}% <br />{' '}
+               {todayScore * 100}% <br />{' '}
             </span>
             de votre objectif
          </div>

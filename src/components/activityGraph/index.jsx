@@ -10,37 +10,9 @@ import {
    ResponsiveContainer,
 } from 'recharts';
 import PropTypes from 'prop-types';
-import Service from '../../service/Service';
-import MockedData from '../../dataSource/MockedData';
-import DataFromAPI from '../../dataSource/DataFromAPI';
-import { useState, useEffect } from 'react';
-
 import './activityGraph.css';
 
 function ActivityGraph(props) {
-   const [userActivity, setUserActivity] = useState([]);
-   const [isDataLoading, setDataLoading] = useState(false);
-   const [error, setError] = useState(null);
-
-   useEffect(() => {
-      async function fetchUserActivity() {
-         setDataLoading(true);
-         try {
-            const userActivity = await new Service(
-               new DataFromAPI()
-            ).getUserActivity(props.userId);
-            console.log(userActivity);
-            setUserActivity(userActivity);
-         } catch {
-            console.log('ERROR ERROR', error);
-            setError(true);
-         } finally {
-            setDataLoading(false);
-         }
-      }
-      fetchUserActivity();
-   }, []);
-
    const contentStyle = { color: '#74798c', fontSize: '14px' };
    const renderLegend = (value) => {
       return <span style={contentStyle}>{value}</span>;
@@ -51,7 +23,7 @@ function ActivityGraph(props) {
          <div className="activity-graph__title">Activité quotidienne</div>
          <ResponsiveContainer>
             <BarChart
-               data={userActivity.sessions}
+               data={props.userActivity.sessions}
                width={830}
                height={320}
                margin={{ top: 60, right: 20, left: 20, bottom: 20 }}

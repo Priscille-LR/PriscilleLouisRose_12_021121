@@ -9,11 +9,13 @@ import ScoreGraph from '../scoreGraph';
 function Graphs(props) {
    return (
       <div className="graphs-wrapper">
-         <ActivityGraph userId={props.userId} />
-         <AverageSessionsGraph userId={props.userId} />
-         <PerformanceGraph userId={props.userId} />
-         <ScoreGraph userId={props.userId} />
-         <Macros userId={props.userId} />
+         <ActivityGraph userActivity={props.data.userActivity} />
+         <AverageSessionsGraph
+            userAverageSessions={props.data.userAverageSessions}
+         />
+         <PerformanceGraph userPerformance={props.data.userPerformance} />
+         <ScoreGraph userInfo={props.data.userInfo} />
+         <Macros userInfo={props.data.userInfo} />
       </div>
    );
 }

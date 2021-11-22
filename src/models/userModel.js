@@ -2,7 +2,7 @@ export class UserModel {
     constructor(result) {
         this.id = result.data.id
         this.userInfo = result.data.userInfos
-        this.todayScore = result.data.todayScore
+        this.todayScore = result.data.todayScore || result.data.score //fix api naming
         this.keyData = result.data.keyData
     }
 
