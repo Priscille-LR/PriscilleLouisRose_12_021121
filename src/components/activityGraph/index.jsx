@@ -50,7 +50,7 @@ function ActivityGraph(props) {
                   axisLine={false}
                   tickLine={false}
                   tickSize={30}
-                  domain={['dataMin - 5', 'dataMax + 8']}
+                  domain={['dataMin - 5', 'dataMax + 5']}
                   stroke="#9B9EAC"
                />
                <Tooltip
@@ -68,8 +68,9 @@ function ActivityGraph(props) {
                   verticalAlign="top"
                   iconType="circle"
                   iconSize={12}
-                  height={76}
+                  height={60}
                   formatter={renderLegend}
+                  // margin={{ top: 20, left: 20, right: 20, bottom: 20 }}
                />
                <Bar
                   yAxisId="right"

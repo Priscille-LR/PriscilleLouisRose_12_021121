@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react';
 import Service from '../../service/Service';
 import MockedData from '../../dataSource/MockedData';
 import DataFromAPI from '../../dataSource/DataFromAPI';
+import Error from '../../utils/error';
+import Loader from '../../utils/loader';
 
 function Dashboard(props) {
    // const [userInfo, setUserInfo] = useState({});
@@ -50,17 +52,30 @@ function Dashboard(props) {
    }, []);
 
    if (error) {
-      return <div>error</div>;
+      return (
+         <div className="error-wrapper">
+            <Error />
+         </div>
+      );
    }
 
    return isDataLoading ? (
-      <div>loading</div>
+      <div className="loader-wrapper">
+         <Loader />
+      </div>
    ) : (
       <div className="dashboard">
          <Greeting userName={data.userInfo.getUserName()} />
          <Graphs data={data} />
       </div>
    );
+
+   // return (
+   //    <div className="loader-wrapper">
+   //       {' '}
+   //       <Loader />{' '}
+   //    </div>
+   // );
 }
 
 export default Dashboard;
