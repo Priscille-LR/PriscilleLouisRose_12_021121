@@ -5,10 +5,6 @@ import carbsIcon from '../../assets/carbs.svg';
 import fatIcon from '../../assets/fat.svg';
 import MacroCard from '../macroCard';
 import './macros.css';
-import Service from '../../service/Service';
-import MockedData from '../../dataSource/MockedData';
-import { useState, useEffect } from 'react';
-import DataFromAPI from '../../dataSource/DataFromAPI';
 
 function Macros(props) {
    const userInfo = props.userInfo;

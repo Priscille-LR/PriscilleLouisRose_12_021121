@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { SourceProvider } from './utils/context'
 
 
 ReactDOM.render(
-  <App />,
+  <SourceProvider>
+    <App />
+  </SourceProvider>,
   document.getElementById('root')
 );
 

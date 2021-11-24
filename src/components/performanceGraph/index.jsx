@@ -10,11 +10,12 @@ import PropTypes from 'prop-types';
 import './performanceGraph.css';
 
 function PerformanceGraph(props) {
+   const performance = props.userPerformance.data;
    return (
       <div className="performance-graph">
          {/* <ResponsiveContainer> */}
          <RadarChart
-            data={props.userPerformance.data}
+            data={performance}
             margin={{ top: 10, bottom: 10, right: 50, left: 50 }}
             outerRadius={80}
             width={270}

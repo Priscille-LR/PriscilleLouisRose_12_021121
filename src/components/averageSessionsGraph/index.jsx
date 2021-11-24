@@ -12,6 +12,8 @@ import PropTypes from 'prop-types';
 import './averageSessionsGraph.css';
 
 function AverageSessionsGraph(props) {
+   const sessions = props.userAverageSessions.sessions;
+
    return (
       <div className="average-sessions-graph">
          <div className="average-sessions-graph__title">
@@ -19,19 +21,11 @@ function AverageSessionsGraph(props) {
          </div>
          {/* <ResponsiveContainer> */}
          <LineChart
-            data={props.userAverageSessions.sessions}
+            data={sessions}
             width={270}
             height={270}
             // margin={{ top: 80, right: 20, left: 20, bottom: 5 }}
-            margin={{ top: 0, right: 0, left: 0, bottom: -10 }}
-
-            // onMouseMove={(state) => {
-            //    if (state.isTooltipActive) {
-            //       setFocusBar(state.activeTooltipIndex);
-            //    } else {
-            //       setFocusBar(null);
-            //    }
-            // }}
+            margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
          >
             <CartesianGrid strokeDasharray="1" horizontal="" vertical="" />
             <XAxis

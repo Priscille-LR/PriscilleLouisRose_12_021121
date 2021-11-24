@@ -2,10 +2,11 @@ import PropTypes from 'prop-types';
 import Greeting from '../../components/greeting';
 import Graphs from '../../components/graphs';
 import './dashboard.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Service from '../../service/Service';
 import MockedData from '../../dataSource/MockedData';
 import DataFromAPI from '../../dataSource/DataFromAPI';
+import { SourceContext } from '../../utils/context';
 import Error from '../../utils/error';
 import Loader from '../../utils/loader';
 
@@ -19,11 +20,18 @@ function Dashboard(props) {
    const [isDataLoading, setDataLoading] = useState(true);
    const [error, setError] = useState(null);
 
+   const { source } = useContext(SourceContext);
+   console.log(source);
+
    useEffect(() => {
       async function fetchUserActivity() {
          setDataLoading(true);
          try {
-            const service = new Service();
+            console.log(source);
+            const service = new Service(
+               source === 'mock' ? new MockedData() : new DataFromAPI()
+            );
+            // const service = new Service();
             const userInfo = await service.getUserInfo(props.userId);
             const userPerformance = await service.getUserPerformance(
                props.userId
@@ -49,7 +57,7 @@ function Dashboard(props) {
          }
       }
       fetchUserActivity();
-   }, []);
+   }, [source]);
 
    if (error) {
       return (

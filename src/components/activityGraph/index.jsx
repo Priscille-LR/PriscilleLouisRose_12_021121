@@ -14,6 +14,8 @@ import './activityGraph.css';
 
 function ActivityGraph(props) {
    const contentStyle = { color: '#74798c', fontSize: '14px' };
+   const sessions = props.userActivity.sessions;
+
    const renderLegend = (value) => {
       return <span style={contentStyle}>{value}</span>;
    };
@@ -23,7 +25,7 @@ function ActivityGraph(props) {
          <div className="activity-graph__title">Activité quotidienne</div>
          <ResponsiveContainer>
             <BarChart
-               data={props.userActivity.sessions}
+               data={sessions}
                width={830}
                height={320}
                margin={{ top: 60, right: 20, left: 20, bottom: 20 }}
