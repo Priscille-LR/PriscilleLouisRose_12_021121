@@ -1,3 +1,7 @@
+/**
+ * Data retrieved in MockedData and used in Greeting, Macros Cards, and ScoreGraph
+ */
+
 export const userInfo = {
     "data": {
         "id": 12,

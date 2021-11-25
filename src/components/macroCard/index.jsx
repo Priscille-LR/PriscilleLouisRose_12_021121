@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types';
 import './macro-card.css';
 
-function MacroCard(props) {
-   const { icon, value, type, className } = props;
+/**
+ * @param {strings} icon, value, type, className
+ * @returns
+ */
 
+function MacroCard({ icon, value, type, className }) {
    return (
       <div className="macros__card">
          <div className={`macros__card__icon ${className}`}>
@@ -16,5 +19,12 @@ function MacroCard(props) {
       </div>
    );
 }
+
+MacroCard.propTypes = {
+   icon: PropTypes.string.isRequired,
+   value: PropTypes.string.isRequired,
+   type: PropTypes.string.isRequired,
+   className: PropTypes.string.isRequired,
+};
 
 export default MacroCard;

@@ -1,3 +1,7 @@
+/**
+ * Data retrieved in MockedData and used to generate ActivityGraph
+ */
+
 export const userActivity = {
     "data": {
         "userId": 12,

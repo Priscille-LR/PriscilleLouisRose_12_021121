@@ -1,18 +1,13 @@
-export class ActivityModel {
-    days = {
-        "2020-07-01": '1',
-        "2020-07-02": '2',
-        "2020-07-03": '3',
-        "2020-07-04": '4',
-        "2020-07-05": '5',
-        "2020-07-06": '6',
-        "2020-07-07": '7'
-    }
+/**
+* @param {object} activity data 
+**/
 
-    constructor(result) {
-        this.id = result.data.userId
-        this.sessions = result.data.sessions.map((el) => ({
-            day: this.days[el.day],
+export class ActivityModel {
+
+    constructor(activity) {
+        this.id = activity.data.userId
+        this.sessions = activity.data.sessions.map((el, index) => ({
+            day: index + 1, //format days to be like what is expected (current month days)
             kilogram: el.kilogram,
             calories: el.calories
         }))

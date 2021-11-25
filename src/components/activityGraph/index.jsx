@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import {
    BarChart,
    CartesianGrid,
@@ -12,9 +12,14 @@ import {
 import PropTypes from 'prop-types';
 import './activityGraph.css';
 
-function ActivityGraph(props) {
+/**
+ * @param {object} userActivity
+ * @returns user activity graph
+ */
+
+function ActivityGraph({ userActivity }) {
    const contentStyle = { color: '#74798c', fontSize: '14px' };
-   const sessions = props.userActivity.sessions;
+   const sessions = userActivity.sessions;
 
    const renderLegend = (value) => {
       return <span style={contentStyle}>{value}</span>;
@@ -97,5 +102,17 @@ function ActivityGraph(props) {
       </div>
    );
 }
+
+ActivityGraph.propTypes = {
+   userActivity: PropTypes.shape({
+      sessions: PropTypes.arrayOf(
+         PropTypes.shape({
+            day: PropTypes.number.isRequired,
+            kilogram: PropTypes.number.isRequired,
+            calories: PropTypes.number.isRequired,
+         })
+      ),
+   }).isRequired,
+};
 
 export default ActivityGraph;

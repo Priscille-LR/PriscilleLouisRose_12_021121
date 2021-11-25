@@ -1,6 +1,5 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import {
-   ResponsiveContainer,
    LineChart,
    CartesianGrid,
    XAxis,
@@ -11,21 +10,24 @@ import {
 import PropTypes from 'prop-types';
 import './averageSessionsGraph.css';
 
-function AverageSessionsGraph(props) {
-   const sessions = props.userAverageSessions.sessions;
+/**
+ * @param {object} userAverageSessions
+ * @returns user average sessions graph
+ */
+
+function AverageSessionsGraph({ userAverageSessions }) {
+   const sessions = userAverageSessions.sessions;
 
    return (
       <div className="average-sessions-graph">
          <div className="average-sessions-graph__title">
             Durée moyenne des sessions
          </div>
-         {/* <ResponsiveContainer> */}
          <LineChart
             data={sessions}
             width={270}
             height={270}
-            // margin={{ top: 80, right: 20, left: 20, bottom: 5 }}
-            margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
+            margin={{ top: 0, right: 0, left: 0, bottom: -10 }}
          >
             <CartesianGrid strokeDasharray="1" horizontal="" vertical="" />
             <XAxis
@@ -53,6 +55,7 @@ function AverageSessionsGraph(props) {
                   stroke: 'black',
                   strokeOpacity: 0.1,
                   strokeWidth: 70,
+                  height: 100,
                }}
             />
 
@@ -72,9 +75,19 @@ function AverageSessionsGraph(props) {
                }}
             />
          </LineChart>
-         {/* </ResponsiveContainer> */}
       </div>
    );
 }
+
+AverageSessionsGraph.propTypes = {
+   userAverageSessions: PropTypes.shape({
+      sessions: PropTypes.arrayOf(
+         PropTypes.shape({
+            day: PropTypes.string.isRequired,
+            sessionLength: PropTypes.number.isRequired,
+         })
+      ),
+   }).isRequired,
+};
 
 export default AverageSessionsGraph;

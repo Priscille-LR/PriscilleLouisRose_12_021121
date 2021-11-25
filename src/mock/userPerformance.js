@@ -1,3 +1,7 @@
+/**
+ * Data retrieved in MockedData and used to generate PerformanceGraph
+ */
+
 export const userPerformance = {
     "data": {
         "userId": 12,

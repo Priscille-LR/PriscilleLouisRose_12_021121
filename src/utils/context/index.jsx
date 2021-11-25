@@ -1,5 +1,10 @@
 import { createContext, useState } from 'react';
 
+/**
+ * Create context to switch data sources :
+ * data comes either from the mocks or the API
+ */
+
 export const SourceContext = createContext();
 
 export const SourceProvider = ({ children }) => {

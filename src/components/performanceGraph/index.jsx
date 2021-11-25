@@ -1,19 +1,18 @@
-import React, { PureComponent } from 'react';
-import {
-   ResponsiveContainer,
-   Radar,
-   RadarChart,
-   PolarGrid,
-   PolarAngleAxis,
-} from 'recharts';
+import React from 'react';
+import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from 'recharts';
 import PropTypes from 'prop-types';
 import './performanceGraph.css';
 
-function PerformanceGraph(props) {
-   const performance = props.userPerformance.data;
+/**
+ * @param {object} userPerformance
+ * @returns user performance graph
+ */
+
+function PerformanceGraph({ userPerformance }) {
+   const performance = userPerformance.data;
+
    return (
       <div className="performance-graph">
-         {/* <ResponsiveContainer> */}
          <RadarChart
             data={performance}
             margin={{ top: 10, bottom: 10, right: 50, left: 50 }}
@@ -35,9 +34,19 @@ function PerformanceGraph(props) {
                fillOpacity={0.7}
             />
          </RadarChart>
-         {/* </ResponsiveContainer> */}
       </div>
    );
 }
+
+PerformanceGraph.propTypes = {
+   userPerformance: PropTypes.shape({
+      data: PropTypes.arrayOf(
+         PropTypes.shape({
+            value: PropTypes.number.isRequired,
+            kind: PropTypes.string.isRequired,
+         })
+      ),
+   }).isRequired,
+};
 
 export default PerformanceGraph;

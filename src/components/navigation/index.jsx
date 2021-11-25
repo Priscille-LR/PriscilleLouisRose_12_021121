@@ -1,5 +1,9 @@
-import PropTypes from 'prop-types';
 import './navigation.css';
+
+/**
+ * Not functional yet
+ * @returns navigation
+ */
 
 function Navigation() {
    return (

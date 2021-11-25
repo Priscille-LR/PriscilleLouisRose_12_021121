@@ -6,9 +6,12 @@ import fatIcon from '../../assets/fat.svg';
 import MacroCard from '../macroCard';
 import './macros.css';
 
-function Macros(props) {
-   const userInfo = props.userInfo;
+/**
+ * @param {object} userInfo
+ * @returns aside Macros containing the macros cards
+ */
 
+function Macros({ userInfo }) {
    return (
       <div className="macros-wrapper">
          <MacroCard
@@ -38,5 +41,9 @@ function Macros(props) {
       </div>
    );
 }
+
+Macros.propTypes = {
+   userInfo: PropTypes.object.isRequired,
+};
 
 export default Macros;

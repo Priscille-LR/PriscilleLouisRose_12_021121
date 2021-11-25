@@ -1,23 +1,17 @@
-import React, { PureComponent } from 'react';
-import {
-   ResponsiveContainer,
-   RadialBarChart,
-   RadialBar,
-   PolarAngleAxis,
-} from 'recharts';
+import React from 'react';
+import { RadialBarChart, RadialBar, PolarAngleAxis } from 'recharts';
 import PropTypes from 'prop-types';
-
 import './scoreGraph.css';
 
-function ScoreGraph(props) {
-   const todayScore = props.userInfo.todayScore;
+/**
+ * @param {object} userInfo
+ * @returns user score graph
+ */
 
-   const data = [
-      { value: todayScore * 100, fill: '#FF0000' },
-      //   { value: 100 - userInfo.todayScore },
-   ];
+function ScoreGraph({ userInfo }) {
+   const todayScore = userInfo.todayScore;
+   const score = [{ value: todayScore * 100, fill: '#FF0000' }];
 
-   console.log(props.userInfo);
    return (
       <div className="score-graph">
          <div className="score-graph__title">Score</div>
@@ -27,9 +21,8 @@ function ScoreGraph(props) {
             </span>
             de votre objectif
          </div>
-         {/* <ResponsiveContainer> */}
          <RadialBarChart
-            data={data}
+            data={score}
             width={270}
             height={270}
             innerRadius={80}
@@ -54,29 +47,14 @@ function ScoreGraph(props) {
                clockwise
             />
          </RadialBarChart>
-         {/* </ResponsiveContainer> */}
-
-         {/* <PieChart
-            width={270}
-            height={270}
-            margin={{ top: 5, right: 5, bottom: 5, left: 5 }}
-         >
-            <Pie
-               data={data}
-               dataKey="value"
-               innerRadius={70}
-               outerRadius={80}
-               startAngle={90}
-               endAngle={450}
-               fill="#FF0000"
-               tickLine={false}
-            >
-               {<Cell key={`cell-0`} fill="#FF0000" />}
-               {<Cell key={`cell-1`} fill="#fbfbfb" />}
-            </Pie>
-         </PieChart> */}
       </div>
    );
 }
+
+ScoreGraph.propTypes = {
+   userInfo: PropTypes.shape({
+      todayScore: PropTypes.number.isRequired,
+   }).isRequired,
+};
 
 export default ScoreGraph;

@@ -1,3 +1,7 @@
+/**
+ * Data retrieved in MockedData and used to generate AverageSessionsGraph
+ */
+
 export const averageSessions = {
     "data": {
         "userId": 12,

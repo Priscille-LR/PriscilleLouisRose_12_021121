@@ -1,16 +1,16 @@
-import PropTypes from 'prop-types';
-import Greeting from '../../components/greeting';
-import Graphs from '../../components/graphs';
-import './dashboard.css';
 import { useState, useEffect, useContext } from 'react';
+import { SourceContext } from '../../utils/context';
 import Service from '../../service/Service';
 import MockedData from '../../dataSource/MockedData';
 import DataFromAPI from '../../dataSource/DataFromAPI';
-import { SourceContext } from '../../utils/context';
+import Greeting from '../../components/greeting';
+import Graphs from '../../components/graphs';
 import Error from '../../utils/error';
 import Loader from '../../utils/loader';
+import PropTypes from 'prop-types';
+import './dashboard.css';
 
-function Dashboard(props) {
+function Dashboard({ userId }) {
    // const [userInfo, setUserInfo] = useState({});
    // const [userActivity, setUserActivity] = useState([]);
    // const [userPerformance, setUserPerformance] = useState([]);
@@ -21,24 +21,20 @@ function Dashboard(props) {
    const [error, setError] = useState(null);
 
    const { source } = useContext(SourceContext);
-   console.log(source);
 
    useEffect(() => {
       async function fetchUserActivity() {
          setDataLoading(true);
          try {
-            console.log(source);
             const service = new Service(
                source === 'mock' ? new MockedData() : new DataFromAPI()
             );
-            // const service = new Service();
-            const userInfo = await service.getUserInfo(props.userId);
-            const userPerformance = await service.getUserPerformance(
-               props.userId
-            );
-            const userActivity = await service.getUserActivity(props.userId);
+
+            const userInfo = await service.getUserInfo(userId);
+            const userPerformance = await service.getUserPerformance(userId);
+            const userActivity = await service.getUserActivity(userId);
             const userAverageSessions = await service.getUserAverageSessions(
-               props.userId
+               userId
             );
 
             const data = {
@@ -50,14 +46,14 @@ function Dashboard(props) {
 
             setData(data);
          } catch {
-            console.log('ERROR ERROR', error);
+            console.log('ERROR : ', error);
             setError(true);
          } finally {
             setDataLoading(false);
          }
       }
       fetchUserActivity();
-   }, [source]);
+   }, [source, userId, error]);
 
    if (error) {
       return (
@@ -77,13 +73,10 @@ function Dashboard(props) {
          <Graphs data={data} />
       </div>
    );
-
-   // return (
-   //    <div className="loader-wrapper">
-   //       {' '}
-   //       <Loader />{' '}
-   //    </div>
-   // );
 }
+
+Dashboard.propTypes = {
+   userId: PropTypes.string.isRequired,
+};
 
 export default Dashboard;
