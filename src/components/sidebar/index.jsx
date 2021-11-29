@@ -3,8 +3,6 @@ import swimmingIcon from '../../assets/swimming.svg';
 import bikingIcon from '../../assets/biking.svg';
 import dumbbellIcon from '../../assets/dumbbell.svg';
 import SidebarButton from '../sidebarButton';
-import { useContext } from 'react';
-import { SourceContext } from '../../utils/context';
 import './sidebar.css';
 
 /**
@@ -14,7 +12,6 @@ import './sidebar.css';
 
 function Sidebar() {
    const icons = [yogaIcon, swimmingIcon, bikingIcon, dumbbellIcon];
-   const { switchSource, source } = useContext(SourceContext);
 
    return (
       <div className="sidebar">
@@ -24,9 +21,6 @@ function Sidebar() {
             ))}
          </div>
          <p className="sidebar__copyright">Copyright, SportSee 2020</p>
-         <button className="switchSource-button" onClick={() => switchSource()}>
-            Mode {source === 'mock' ? 'API' : 'MOCK'}
-         </button>
       </div>
    );
 }

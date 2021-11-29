@@ -15,8 +15,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start_mock": "REACT_APP_SOURCE=MOCK REACT_APP_USERID=12 react-scripts start",
-    "start_api": "REACT_APP_SOURCE=API REACT_APP_USERID=12 react-scripts start",
+    "start": " REACT_APP_USERID=12 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

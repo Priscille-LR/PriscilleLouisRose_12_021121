@@ -1,8 +1,5 @@
-import { useState, useEffect, useContext } from 'react';
-import { SourceContext } from '../../utils/context';
-import Service from '../../service/Service';
-import MockedData from '../../dataSource/MockedData';
-import DataFromAPI from '../../dataSource/DataFromAPI';
+import { useState, useEffect } from 'react';
+import { dependencies } from '../../service/Dependencies';
 import Greeting from '../../components/greeting';
 import Graphs from '../../components/graphs';
 import Error from '../../utils/error';
@@ -20,22 +17,18 @@ function Dashboard({ userId }) {
    const [isDataLoading, setDataLoading] = useState(true);
    const [error, setError] = useState(null);
 
-   const { source } = useContext(SourceContext);
-
    useEffect(() => {
       async function fetchUserActivity() {
          setDataLoading(true);
          try {
-            const service = new Service(
-               source === 'mock' ? new MockedData() : new DataFromAPI()
-            );
-
-            const userInfo = await service.getUserInfo(userId);
-            const userPerformance = await service.getUserPerformance(userId);
-            const userActivity = await service.getUserActivity(userId);
-            const userAverageSessions = await service.getUserAverageSessions(
+            const userInfo = await dependencies.userService.getUserInfo(userId);
+            const userPerformance =
+               await dependencies.userService.getUserPerformance(userId);
+            const userActivity = await dependencies.userService.getUserActivity(
                userId
             );
+            const userAverageSessions =
+               await dependencies.userService.getUserAverageSessions(userId);
 
             const data = {
                userInfo: userInfo,
@@ -53,7 +46,7 @@ function Dashboard({ userId }) {
          }
       }
       fetchUserActivity();
-   }, [source, userId, error]);
+   }, [userId, error]);
 
    if (error) {
       return (
