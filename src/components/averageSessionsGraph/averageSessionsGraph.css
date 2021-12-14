@@ -1,31 +1,11 @@
 .average-sessions-graph {
+   grid-area: average-sessions;
    position: relative;
    background-color: #ff0000;
    color: #ffb9b9;
-   width: fit-content;
    border-radius: 10px;
-   grid-column: 1 /2;
-   grid-row: 2 / 3;
-   row-gap: 50px;
    z-index: 10;
 }
-
-/* .average-sessions-graph:before {
-   position: absolute;
-   content: '';
-   width: 100%;
-   height: 100%;
-   top: 0;
-   left: 0;
-   background: linear-gradient(
-      to left,
-      rgba(255, 255, 255, 0.1),
-      rgba(249, 129, 129, 0.9)
-   );
-   background-size: cover;
-   border-radius: 20px;
-   z-index: 1;
-} */
 
 .average-sessions-graph__title {
    position: absolute;

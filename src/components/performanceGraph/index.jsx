@@ -1,5 +1,11 @@
 import React from 'react';
-import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from 'recharts';
+import {
+   Radar,
+   RadarChart,
+   PolarGrid,
+   PolarAngleAxis,
+   ResponsiveContainer,
+} from 'recharts';
 import PropTypes from 'prop-types';
 import './performanceGraph.css';
 
@@ -11,29 +17,32 @@ import './performanceGraph.css';
 function PerformanceGraph({ userPerformance }) {
    const performance = userPerformance.data;
 
+   const startAngle = 210;
+
    return (
       <div className="performance-graph">
-         <RadarChart
-            data={performance}
-            margin={{ top: 10, bottom: 10, right: 50, left: 50 }}
-            outerRadius={80}
-            width={270}
-            height={270}
-         >
-            <PolarGrid />
-            <PolarAngleAxis
-               dataKey="kind"
-               tick={{ fill: 'white', fontSize: 12, fontWeight: 500 }}
-               tickSize={10}
-            />
-            <Radar
-               name="performance"
-               dataKey="value"
-               stroke="#FF0101"
-               fill="#FF0101"
-               fillOpacity={0.7}
-            />
-         </RadarChart>
+         <ResponsiveContainer width="99%" height={280}>
+            <RadarChart
+               data={performance}
+               outerRadius={65}
+               startAngle={startAngle}
+               endAngle={startAngle + 360}
+            >
+               <PolarGrid />
+               <PolarAngleAxis
+                  dataKey="kind"
+                  tick={{ fill: 'white', fontSize: 12, fontWeight: 500 }}
+                  tickSize={10}
+               />
+               <Radar
+                  name="performance"
+                  dataKey="value"
+                  stroke="#FF0101"
+                  fill="#FF0101"
+                  fillOpacity={0.7}
+               />
+            </RadarChart>
+         </ResponsiveContainer>
       </div>
    );
 }

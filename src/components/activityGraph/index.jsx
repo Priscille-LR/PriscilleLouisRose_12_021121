@@ -28,11 +28,9 @@ function ActivityGraph({ userActivity }) {
    return (
       <div className="activity-graph">
          <div className="activity-graph__title">Activité quotidienne</div>
-         <ResponsiveContainer>
+         <ResponsiveContainer width="99%" height={320}>
             <BarChart
                data={sessions}
-               width={830}
-               height={320}
                margin={{ top: 60, right: 20, left: 20, bottom: 20 }}
                style={contentStyle}
             >
@@ -77,7 +75,6 @@ function ActivityGraph({ userActivity }) {
                   iconSize={12}
                   height={60}
                   formatter={renderLegend}
-                  // margin={{ top: 20, left: 20, right: 20, bottom: 20 }}
                />
                <Bar
                   yAxisId="right"

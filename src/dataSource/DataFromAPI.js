@@ -1,14 +1,13 @@
-import IDataSource from "./IDataSource"
-
 const host = process.env.REACT_APP_API
 const port = process.env.REACT_APP_PORT
 
 /**
- * Fetch data from API. Has 4 methods corresponding to the API's 4 endpoints
+ * @class
+ * @classdesc Fetch data from API. Has 4 methods corresponding to the API's 4 endpoints
  * This way, API calls are done outside of React Components
  */
 
-class DataFromAPI extends IDataSource {
+class DataFromAPI {
 
     /**
      * @param {string} userId 

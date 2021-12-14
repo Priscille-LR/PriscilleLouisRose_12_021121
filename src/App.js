@@ -1,7 +1,7 @@
 import Header from './components/header';
 import Sidebar from './components/sidebar';
 import Dashboard from './pages/dashboard';
-import './App.css';
+// import './App.css';
 
 function App() {
 

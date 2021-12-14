@@ -1,14 +1,12 @@
 .activity-graph {
-   display: flex;
-   justify-content: space-evenly;
+   grid-area: activity;
+   /* display: flex;
+   justify-content: space-evenly; */
    position: relative;
    background-color: #fbfbfb;
    color: black;
-   /* width: fit-content; */
    border-radius: 10px;
-   grid-column: 1 / 4;
-   grid-row: 1 / 2;
-   row-gap: 50px;
+   /* row-gap: 50px; */
 }
 
 .activity-graph__title {

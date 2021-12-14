@@ -8,17 +8,13 @@ import PropTypes from 'prop-types';
 import './dashboard.css';
 
 function Dashboard({ userId }) {
-   // const [userInfo, setUserInfo] = useState({});
-   // const [userActivity, setUserActivity] = useState([]);
-   // const [userPerformance, setUserPerformance] = useState([]);
-   // const [userAverageSessions, setUserAverageSessions] = useState([]);
-
    const [data, setData] = useState({});
    const [isDataLoading, setDataLoading] = useState(true);
    const [error, setError] = useState(null);
 
    useEffect(() => {
-      async function fetchUserActivity() {
+      async function fetchUserData() {
+         //todo
          setDataLoading(true);
          try {
             const userInfo = await dependencies.userService.getUserInfo(userId);
@@ -36,7 +32,6 @@ function Dashboard({ userId }) {
                userActivity: userActivity,
                userAverageSessions: userAverageSessions,
             };
-
             setData(data);
          } catch {
             console.log('ERROR : ', error);
@@ -45,7 +40,7 @@ function Dashboard({ userId }) {
             setDataLoading(false);
          }
       }
-      fetchUserActivity();
+      fetchUserData();
    }, [userId, error]);
 
    if (error) {

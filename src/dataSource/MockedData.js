@@ -1,14 +1,14 @@
-import IDataSource from "./IDataSource"
 import { userInfo } from "../mock/userInfo"
 import { userPerformance } from "../mock/userPerformance"
 import { userActivity } from "../mock/userActivity"
 import { averageSessions } from "../mock/averageSessions"
 
 /**
- * Fetch mocked data from local Mock repository 
+ * @class
+ * @classdesc Fetch mocked data from local Mock repository 
  */
 
-class MockedData extends IDataSource {
+class MockedData {
 
     /**
      * @param {string} userId 

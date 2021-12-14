@@ -1,5 +1,4 @@
-import DataFromAPI from "../dataSource/DataFromAPI"
-//import MockedData from "../dataSource/MockedData"
+import MockedData from "../dataSource/MockedData"
 import Service from "./Service"
 
 /**
@@ -7,5 +6,5 @@ import Service from "./Service"
  * replace DataFromAPI() by MockedData() to use the local mocked data
  */
 export const dependencies = {
-    userService: new Service(new DataFromAPI())
+    userService: new Service(new MockedData())
 }

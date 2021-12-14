@@ -1,13 +1,5 @@
 .performance-graph {
-   display: flex;
-   justify-content: center;
-   align-items: center;
+   grid-area: performance;
    background-color: #282d30;
-   color: white;
-   width: fit-content;
    border-radius: 10px;
-   grid-column: 2 /3;
-   grid-row: 2 / 3;
-   padding-right: 0.5rem;
-   /* row-gap: 50px; */
 }

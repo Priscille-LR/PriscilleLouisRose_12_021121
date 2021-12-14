@@ -1,15 +1,12 @@
 .score-graph {
+   grid-area: score;
    display: flex;
    position: relative;
    justify-content: center;
    align-items: center;
    background-color: #fbfbfb;
    color: black;
-   width: fit-content;
    border-radius: 10px;
-   grid-column: 3 /4;
-   grid-row: 2 / 3;
-   row-gap: 50px;
 }
 
 .score-graph__title {
