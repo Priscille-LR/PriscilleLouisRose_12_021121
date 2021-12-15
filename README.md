@@ -23,6 +23,10 @@ Here I used the chart library [Recharts](https://recharts.org/en-US/) to generat
 - Install the dependencies with `npm install`
 - Run the app with `npm start`
 
+# Configuration 
+- To use the API, go to `src/Service/Dependencies` and change `new MockedData()` to `DataFromAPI()`
+- To switch between the two user profiles available (12 or 18), go to `package.json` and modify the environment variable - it's set to 12 by default.
+
 # Documents
 
 Find the app mock-up on [Figma](https://www.figma.com/file/BMomGVZqLZb811mDMShpLu/UI-design-Sportify-FR?node-id=1%3A2)
